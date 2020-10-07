@@ -27,7 +27,7 @@ Post/transacoes enviando dados<br>
 <br>Data_transacao(dd/mm/yyyy)
 <br>Data_pagamento(dd/mm/yyyy)
 <br>Valor(0.00f)
-<br>Status(true/false)<b>
+<br>Status(true/false)</b>
 
 6: Deve validar campos obrigatórios na movimentação
 <br>Post/transacoes enviar campos e validar 
