@@ -1,6 +1,6 @@
 # BarrigaRest
 
-<b>Cenários de testes da API<b>
+<b>Cenários de testes da API</b>
 
 Rota: http://barrigarest.wcaquino.me
 
