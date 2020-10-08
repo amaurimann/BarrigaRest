@@ -113,57 +113,6 @@ public class BarrigaTest extends Base_Test {
 			.statusCode(201) //status code para inserção
 		;
 	}
-	
-	@Test
-	public void deveInserirMovimentacaoComSucessoTest2() {
-		
-		Movimentacao mov2 = new Movimentacao();
-		
-		mov2.setData_transacao("02/02/2000");
-		mov2.setData_pagamento("12/05/2010");
-		mov2.setDescricao("Desc da Mov2");
-		mov2.setEnvolvido("Envolv na Mov2");
-		mov2.setValor(300f);
-		mov2.setConta_id(281292);
-		mov2.setTipo("REC");
-		mov2.setStatus(true);
-		
-		
-		given()
-			.header("Authorization", "JWT " + TOKEN)//passando credenciais
-			.body(mov2)//pasando valores por objeto
-		.when()
-			.post("/transacoes")//caminho de destino
-		.then()
-			.log().all()//log all no console
-			.statusCode(201)//status 201 de insercao com sucesso
-		;		
-		
-	}
-	
-	@Test
-	public void deveValidarCamposObrigatoriosNaMovimentacao() {
-		
-		given()
-			.header("Authorization", "JWT " + TOKEN)
-			.body("{}")
-		.when()
-			.post("/transacoes")
-		.then()
-		.log().all()
-			.statusCode(400) // status 400 bad request error
-			.body("$", hasSize(8)) // $ nó raiz, hasSize 8 é a qtd de mensagens que vao aparecer informando os campos obrigatórios que precisam ser preenchidos
-			.body("msg", hasItems(
-					"Data da Movimentação é obrigatório",
-					"Data do pagamento é obrigatório",
-					"Interessado é obrigatório",
-					"Valor é obrigatório",
-					"Valor deve ser um número",
-					"Conta é obrigatório",
-					"Situação é obrigatório"
-					))
-			;
-	}
 }
 
 
