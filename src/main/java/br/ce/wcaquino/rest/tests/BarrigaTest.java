@@ -1,6 +1,6 @@
 package br.ce.wcaquino.rest.tests;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 import java.util.HashMap;
@@ -72,6 +72,20 @@ public class BarrigaTest extends Base_Test {
 			.log().all()
 			.statusCode(200)
 			.body("nome", is("conta alterada"))
+		;
+	}
+	
+	@Test
+	public void naoDeveInserirContaComMesmoNome() {
+		given()
+		.header("Authorization", "JWT " + TOKEN)
+			.body("{\"nome\": \"conta alterada\"}")
+		.when()
+			.post("/contas") // post = inserindo 281292 é o id da conta
+		.then()
+			.log().all()
+			.statusCode(400)
+			.body("error", is("Já existe uma conta com esse nome!"))
 		;
 	}
 }
