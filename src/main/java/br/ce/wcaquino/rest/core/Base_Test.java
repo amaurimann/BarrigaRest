@@ -12,7 +12,7 @@ public class Base_Test implements Constantes {
 	@BeforeClass
 	public static void setup() {
 		
-		System.out.println("Passou Aqui");
+		//System.out.println("Passou Aqui");
 		RestAssured.baseURI = APP_BASE_URL; // referencia a classe constantes
 		RestAssured.port = APP_PORT;// referencia a classe constantes
 		RestAssured.basePath = APP_BASE_PATH;// referencia a classe constantes
