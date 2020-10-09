@@ -203,6 +203,18 @@ public class BarrigaTest extends Base_Test {
 		;
 	}
 	
+	@Test
+	public void deveRemoverMovimentacao() {
+	
+	given()
+		.header("Authorization", "JWT " + TOKEN)
+	.when()
+		.delete("/transacoes/254586") //254586 id da movimentacao a ser excluida, mod dev do browser inspetor
+	.then()
+		.log().all()
+		.statusCode(204)
+	;
+}
 	
 	private Movimentacao getMovimentacaoValida() {
 		Movimentacao mov = new Movimentacao();
